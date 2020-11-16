@@ -1,9 +1,10 @@
 package com.raolulu.coolweather;
 
+
+
 import android.app.ProgressDialog;
 import android.icu.text.CaseMap;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,6 +31,7 @@ import java.util.List;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
+import android.support.v4.app.Fragment;
 
 /**
  * Created by m1126_000 on 2020/9/7.
@@ -166,8 +168,9 @@ public class ChooseAreaFragment extends Fragment {
             adapter.notifyDataSetChanged();
             currentLevel = LEVEL_COUNTY;
         }else{
+            int provinceCode = selectedProvince.getProvinceCode();
             int CityCode = selectedCity.getCityCode();
-            String address = "http://guolin.tech/api/china/" + CityCode;
+            String address = "http://guolin.tech/api/china/" + provinceCode +"/" +CityCode;
             queryFromServer(address, "county");
         }
     }
